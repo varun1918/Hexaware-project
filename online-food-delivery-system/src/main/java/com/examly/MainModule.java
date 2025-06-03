@@ -127,7 +127,7 @@ public class MainModule {
             int customerId = scanner.nextInt();
             System.out.print("Enter restaurant ID to place order: ");
             int restaurantId = scanner.nextInt();
-            // scanner.nexLine();
+            scanner.nextLine();
 
             List<MenuItem> menuItems = menuService.getMenuItemsByRestaurant(restaurantId);
             if(menuItems.isEmpty()){
@@ -145,29 +145,43 @@ public class MainModule {
                 System.out.println();
             }
 
-            System.out.print("Enter menu item ID to order: ");
-            int itemId = scanner.nextInt();
-            System.out.print("Enter quantity: ");
-            int quantity = scanner.nextInt();
-            scanner.nextLine();
-            System.out.print("Enter delivery address: ");
-            String deliveryAddress = scanner.nextLine();
+            List<OrderItem> orderedItems = new ArrayList<>();
+            double totalPrice = 0;
+            int orderId = (int) (Math.random()*1000) + 1;
 
-            MenuItem selectedItem = menuItems.stream()
-                .filter(item -> item.getItemId() == itemId)
-                .findFirst()
-                .orElse(null);
-            if(selectedItem == null || selectedItem.getAvailableQuantity() < quantity){
-                System.out.println("Invalid item ID or insufficient quantity");
+            while(true){
+                System.out.print("Enter menu item ID to order: ");
+                int itemId = scanner.nextInt();
+                System.out.print("Enter quantity: ");
+                int quantity = scanner.nextInt();
+                scanner.nextLine();
+    
+                MenuItem selectedItem = menuItems.stream()
+                    .filter(item -> item.getItemId() == itemId)
+                    .findFirst()
+                    .orElse(null);
+
+                if(selectedItem == null || selectedItem.getAvailableQuantity() < quantity){
+                    System.out.println("Invalid item ID or insufficient quantity");
+                }else{
+                    orderedItems.add(new OrderItem(orderId, itemId, quantity));
+                    totalPrice += selectedItem.getPrice() * quantity;
+                }
+
+                System.out.print("Do you want to add another item? (yes/no): ");
+                String ans = scanner.nextLine();
+                if(!ans.equalsIgnoreCase("yes")){ break; }
+            }
+
+            if(orderedItems.isEmpty()){
+                System.out.println("No valid items selected. Order not placed.");
                 return;
             }
 
-            int orderId = (int) (Math.random()*1000) + 1;
-            double totalPrice = selectedItem.getPrice() * quantity;
+            System.out.print("Enter delivery address: ");
+            String deliveryAddress = scanner.nextLine();
+
             Order order = new Order(orderId, customerId, restaurantId, "Pending", totalPrice, deliveryAddress);
-            List<OrderItem> orderedItems = new ArrayList<>();
-            orderedItems.add(new OrderItem(orderId, itemId, quantity));
-            
             boolean success = orderService.createOrder(order, orderedItems);
             System.out.println("Order placed successfully!");
         }
@@ -211,6 +225,12 @@ public class MainModule {
                 return;
             }
 
+            // Check if order is already paid
+            if("Confirmed".equals(order.getOrderStatus())){
+                System.out.println("This order has already been paid for.");
+                return;
+            }
+
             if(order.getTotalPrice() != amountPaid){
                 System.out.println("Invalid amount. Expected: " + order.getTotalPrice());
                 return;
@@ -221,20 +241,14 @@ public class MainModule {
             boolean success = paymentService.processPayment(payment);
             if(success){
                 System.out.println("Payment successful! Order is now confirmed.");
-                order.setOrderStatus("Confirmed");
+                boolean updated = orderService.updateOrderStatus(orderId, "Confirmed");
+                if(updated){
+                    System.out.println("Order status updated to Confirmed");
+                }else{
+                    System.out.println("Failed to update order status");
+                }
             }else{
                 System.out.println("Payment Failed");
             }
         }
 }
-
-
-
-
-
-    
-
-
-
-
-
