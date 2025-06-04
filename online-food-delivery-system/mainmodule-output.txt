@@ -1,0 +1,173 @@
+Microsoft Windows [Version 10.0.22631.5335]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\User\Desktop\Hexaware project> cmd /C "C:\Users\User\AppData\Roaming\Code\User\globalStorage\pleiades.java-extension-pack-jdk\java\8\bin\java.exe -cp C:\Users\User\AppData\Local\Temp\cp_9ahk6o15aptgaoo3pah8twean.jar com.examly.MainModule "
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 1
+Enter customer name: varun
+Enter customer email: varun@gmail.com
+Enter customer phone number: 9962385618
+Enter customer password: varun
+Customer registered successfully!
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 2
+Enter restaurant name: Le meridian
+Enter restaurant address: Chennai
+Enter cuisine type: demo
+Enter contact number: 9176063602
+Restaurant created successfully!
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 3
+Enter restaurant ID to add menu item: 1
+Enter menu item name: Fried rice
+Enter menu item price: 250
+Enter menu item description: demo
+Enter available quantity: 1
+Menu item created successfully!
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 4
+
+=== List of Restaurants ===
+Restaurant ID: 1
+Name: Le meridian
+Choose an option: 4
+
+=== List of Restaurants ===
+Restaurant ID: 1
+Name: Le meridian
+
+=== List of Restaurants ===
+Restaurant ID: 1
+Name: Le meridian
+Restaurant ID: 1
+Name: Le meridian
+Name: Le meridian
+Address: Chennai
+Cuisine Type: demo
+Contact Number: 9176063602
+Cuisine Type: demo
+Contact Number: 9176063602
+Contact Number: 9176063602
+
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 5
+Enter customer ID: 1
+Enter restaurant ID to place order: 1
+
+ Menu Items
+Item ID: 1
+Name: Fried rice
+Price: 250.0
+Description: demo
+Available Quantity: 1
+
+Enter menu item ID to order: 1
+Enter quantity: 1
+Do you want to add another item? (yes/no): no
+Enter delivery address: Kolathur chennai
+Order placed successfully!
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 6
+Enter customer ID to view orders: 2
+No orders found for this customer.
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 6
+Enter customer ID to view orders: 1
+
+=== List of Orders ===
+Order ID: 627
+Restaurant ID: 1
+Total Price: 250.0
+Order Status: Pending
+Delivery Address: Kolathur chennai
+
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 7
+Enter order ID to make payment: 627
+Enter amount to pay: 250
+Payment successful! Order is now confirmed.
+Order status updated to Confirmed
+
+=== Welcome to the Online Food Delivery System ===
+1. Register Customer
+2. Create Restaurant
+3. Create Menu Item
+4. View Restaurants
+5. Place Order
+6. View Orders
+7. Make Payment
+8. Exit
+Choose an option: 8
+Exiting...
